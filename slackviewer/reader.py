@@ -165,15 +165,15 @@ class Reader(object):
             for day in sorted(day_files):
                 with io.open(os.path.join(self._PATH, day), encoding="utf8") as f:
                     # loads all messages
-                    day_messages = json.load(f)   
+                    day_messages = json.load(f)
 
                     # sorts the messages in the json file
-                    day_messages.sort(key=Reader._extract_time) 
-                 
+                    day_messages.sort(key=Reader._extract_time)
+
                     messages.extend([Message(formatter, d) for d in day_messages])
 
             chats[name] = messages
-        chats = self._build_threads(chats)
+        # chats = self._build_threads(chats)
 
         if isDms:
             self._EMPTY_DMS = empty_dms
